@@ -7,7 +7,7 @@
   
   Each constructor function has unique properties and methods that are defined in their block comments below:
 */
-  
+
 /*
   === GameObject ===
   * createdAt
@@ -16,12 +16,38 @@
   * destroy() // prototype method that returns: `${this.name} was removed from the game.`
 */
 
+function GameObject(createdAt, name, dimensions){
+  this.creationpoint = createdAt,
+  this.name = name,
+  this.dimensions = dimensions
+}
+
+GameObject.prototype.destroy = function(){
+return `${this.name} was removed from the game.`
+}
+
+let lightningMage = new GameObject('7-24-19', 'Raiden', '5\'7')
+
+
 /*
   === CharacterStats ===
   * healthPoints
   * takeDamage() // prototype method -> returns the string '<object name> took damage.'
   * should inherit destroy() from GameObject's prototype
 */
+
+function CharacterStats(healthpoints){
+  this.health = healthpoints
+}
+
+function takeDamage(name) {
+  GameObject.call(this, name);
+  return `${this.name} took damage.`
+}
+
+takeDamage.prototype = Object.create(GameObject.prototype)
+
+
 
 /*
   === Humanoid (Having an appearance or character resembling that of a human.) ===
