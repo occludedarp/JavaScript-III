@@ -20,12 +20,33 @@ console.log(this)
 
 // Principle 2
 
-// code example for Implicit Binding
+kennan.speak = function(){
+    return `Hello, my name is ${this.name}!`
+  }
 
 // Principle 3
 
-// code example for New Binding
+function Coffee(region, roast, aromatics) {
+    this.region = region,
+    this.roast = roast,
+    this.aromatics = aromatics
+  }
+  
+  let favoriteCoffee = new Coffee('Ethiopian', 'light roast', 'floral');
+    
+  console.log(favoriteCoffee)
 
 // Principle 4
 
-// code example for Explicit Binding
+let myAnimal ={
+    name: 'Orca',
+    age: 33,
+    sound: 'mooo'
+    }
+  
+  function orcaSound(){
+    console.log(this.sound) 
+  }
+  
+  let newOrcaSound = orcaSound.bind(myAnimal);
+  newOrcaSound();
