@@ -17,20 +17,16 @@
 */
 
 function GameObject(attributes){
-  this.creationpoint = attributes.createdAt,
+  this.createdAt = attributes.createdAt,
   this.name = attributes.name,
-  this.dimensions = {
-    length: attributes.length,
-    width: attributes.width,
-    height: attributes.height,
-  },
-  GameObject.call(this, attributes)
+  this.dimensions = attributes.dimensions
 }
 
 GameObject.prototype.destroy = function(){
 return `${this.name} was removed from the game.`
 }
 
+// GameObject.call(this, attributes)
 
 /*
   === CharacterStats ===
@@ -40,18 +36,19 @@ return `${this.name} was removed from the game.`
 */
 
 function CharacterStats(attributes){
-  this.health = attributes
-  GameObject.call(this, attributes)
+  GameObject.call(this, attributes);
+  this.healthPoints = attributes.healthPoints
+  
 }
 
 CharacterStats.prototype.takeDamage = function (){
   return `${this.name} took damage.`
 }
 
-CharacterStats.prototype = Object.create(GameObject.prototype)
+// CharacterStats.prototype = Object.create(GameObject.prototype)
 
 
-// GameObject.call(this, attributes)
+
 
 
 
@@ -65,22 +62,20 @@ CharacterStats.prototype = Object.create(GameObject.prototype)
   * should inherit takeDamage() from CharacterStats
 */
 
-function Humanoid(attributes) {
-  this.team = attributes.team,
-  this.weapons = attributes.weapons,
-  this.language = attributes.language,
-  CharacterStats.call(this, attributes)
+function Humanoid(hmndAttributes) {
+  CharacterStats.call(this, hmndAttributes);
+  this.team = hmndAttributes.team,
+  this.weapons = hmndAttributes.weapons,
+  this.language = hmndAttributes.language
 }
 
 Humanoid.prototype.greet = function() {
   `${this.name} offers a greeting in ${this.language}`
 }
 
-Humanoid.prototype = Object.create(GameObject.prototype)
+// Humanoid.prototype = Object.create(GameObject.prototype)
 
-Humanoid.prototype = Object.create(CharacterStats.prototype)
-
-CharacterStats.call(this, attributes)
+// Humanoid.prototype = Object.create(CharacterStats.prototype)
 
 
 /*
@@ -144,16 +139,16 @@ CharacterStats.call(this, attributes)
     language: 'Elvish',
   });
 
-  // console.log(mage.createdAt); // Today's date
-  // console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
-  // console.log(swordsman.healthPoints); // 15
-  // console.log(mage.name); // Bruce
-  // console.log(swordsman.team); // The Round Table
-  // console.log(mage.weapons); // Staff of Shamalama
-  // console.log(archer.language); // Elvish
-  // console.log(archer.greet()); // Lilith offers a greeting in Elvish.
-  // console.log(mage.takeDamage()); // Bruce took damage.
-  // console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
+  console.log(mage.createdAt); // Today's date
+  console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
+  console.log(swordsman.healthPoints); // 15
+  console.log(mage.name); // Bruce
+  console.log(swordsman.team); // The Round Table
+  console.log(mage.weapons); // Staff of Shamalama
+  console.log(archer.language); // Elvish
+  console.log(archer.greet()); // Lilith offers a greeting in Elvish.
+  console.log(mage.takeDamage()); // Bruce took damage.
+  console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
 
 
   // Stretch task: 
