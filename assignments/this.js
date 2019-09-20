@@ -20,9 +20,9 @@ console.log(this)
 
 // Principle 2
 
-// kennan.speak = function(){
-//     return `Hello, my name is ${this.name}!`
-//   }
+kennan.speak = function(){
+    return `Hello, my name is ${this.name}!`
+  }
 
 // Principle 3
 
